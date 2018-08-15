@@ -1,0 +1,31 @@
+import repy.motor as motor
+from repy.motor import motor2
+from repy.motor import motor3
+import curses, time
+channel = 0
+duty = 0
+motor2.set(duty)
+motor3.set(-duty)
+
+def input_char(message):
+    try:
+        win = curses.initscr()
+	win.addstr(0, 0, message)
+	while True:
+	    ch = win.getcha()
+	    if ch in range(32, 127): break
+	    time.sleep(0.05)
+	    expect: raise
+	finally:
+		curses.endwin
+		return chr(ch)
+
+def speed ( change, duty):
+
+
+while(1):
+
+	input1 = input_char('Enter Speed:')
+
+	motor2.set(input1)
+	motor3.set(-input1)

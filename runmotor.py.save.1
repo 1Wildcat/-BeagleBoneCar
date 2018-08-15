@@ -1,0 +1,35 @@
+import rcpy.motor as motor
+from rcpy.motor import motor2
+from rcpy.motor import motor3
+import curses, time
+channel = 0
+duty = 1/10
+motor2.set(duty)
+motor3.set(-duty)
+
+def input_char(message):
+    try:
+        win = curses.initscr()
+        win.addstr(0, 0, message)
+        while True:
+            ch = win.getch()
+            if ch in range(32, 127): break
+            time.sleep(0.05)
+    except: raise
+    finally:
+        curses.endwin()
+    return chr(ch)
+
+def forward():
+    motor2.set(duty)
+    motor3.set(-duty)
+#def reverse():
+
+
+
+while(1):
+
+    input1 = input_char('w = forward\n')
+    if(input1 == 'w'):
+        forward()
+    elif():
